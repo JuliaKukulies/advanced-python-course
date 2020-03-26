@@ -1,0 +1,76 @@
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+     4                                           @profile
+     5                                           def gen_primes(n):
+     6         1          2.0      2.0      0.0      l = range(2,n)
+     7         1          0.0      0.0      0.0      primes = []
+     8       999        346.0      0.3      6.1      for j in range(0,len(l)):
+     9       998        324.0      0.3      5.7          p = True
+    10      2968       1048.0      0.4     18.3          for d in primes:
+    11      2967       1629.0      0.5     28.5              if(d > sqrt(l[j])):
+    12       167         48.0      0.3      0.8                  break
+    13      2800       1326.0      0.5     23.2              if(l[j] % d == 0):
+    14       830        294.0      0.4      5.1                  p = False
+    15       830        284.0      0.3      5.0                  break;
+    16       998        308.0      0.3      5.4          if(p):
+    17       168        104.0      0.6      1.8              primes.append(l[j])
+    18                                           
+    19         1          0.0      0.0      0.0      return primes
+
+Total time: 0.153748 s
+File: euler72.py
+Function: factorize at line 21
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    21                                           @profile
+    22                                           def factorize(n,primes):
+    23      9999       3133.0      0.3      2.0      factors = []
+    24      9999       2849.0      0.3      1.9      init_n = n
+    25     96347      28923.0      0.3     18.8      for p in primes:
+    26    118736      49352.0      0.4     32.1          while(n%p == 0):
+    27     22389       7752.0      0.3      5.0              n = n/p
+    28     22389       8731.0      0.4      5.7              factors.append(p)
+    29     96347      39858.0      0.4     25.9          if(p > sqrt(n)):
+    30      9999       3153.0      0.3      2.1              break
+    31      9999       3471.0      0.3      2.3      if(n > 1):
+    32      9596       3600.0      0.4      2.3          factors.append(n)
+    33      9999       2926.0      0.3      1.9      return factors
+
+Total time: 0 s
+File: euler72.py
+Function: phi at line 36
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    36                                           @profile
+    37                                           def phi(n,primes):
+    38                                               factors = factorize(n,primes)
+    39                                               p = 1
+    40                                           
+    41                                               for i in range(2,n):
+    42                                                   flag = True
+    43                                                   for f in factors:
+    44                                                       if i%f == 0:
+    45                                                           flag = False
+    46                                                           break
+    47                                                   if flag:
+    48                                                       p+=1
+    49                                               return p
+
+Total time: 0.318868 s
+File: euler72.py
+Function: fast_phi at line 51
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    51                                           @profile
+    52                                           def fast_phi(n,primes):
+    53      9999     278087.0     27.8     87.2      factors = factorize(n,primes)
+    54      9999       3681.0      0.4      1.2      phi = factors[0]-1
+    55     31985      14083.0      0.4      4.4      for i in range(1,len(factors)):
+    56     21986       9742.0      0.4      3.1          if(factors[i] == factors[i-1]):
+    57      7685       4318.0      0.6      1.4              phi *= (factors[i]-1)*(factors[i])/(factors[i]-1)
+    58                                                   else:
+    59     14301       5969.0      0.4      1.9              phi *= (factors[i]-1)
+    60      9999       2988.0      0.3      0.9      return phi

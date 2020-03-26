@@ -1,0 +1,78 @@
+Line #    Mem usage    Increment   Line Contents
+================================================
+    10   54.215 MiB   54.215 MiB   @profile
+    11                             def create_matrix(N):
+    12                                 # NxN matrix
+    13   54.215 MiB    0.000 MiB       X = []
+    14   54.215 MiB    0.000 MiB       for i in range(N):
+    15   54.215 MiB    0.000 MiB           X.append([random.randint(0,100) for r in range(N)])
+    16                             
+    17   54.215 MiB    0.000 MiB       return X
+
+
+Filename: matmult_profiling.py
+
+Line #    Mem usage    Increment   Line Contents
+================================================
+    20   54.215 MiB   54.215 MiB   @profile
+    21                             def create_larger_matrix(N):
+    22                                 # Nx(N+1) matrix
+    23   54.215 MiB    0.000 MiB       Y = []
+    24   54.672 MiB    0.000 MiB       for i in range(N):
+    25   54.672 MiB    0.258 MiB           Y.append([random.randint(0,100) for r in range(N+1)])
+    26                             
+    27   54.672 MiB    0.000 MiB       return Y
+
+
+Filename: matmult_profiling.py
+
+Line #    Mem usage    Increment   Line Contents
+================================================
+    31   54.672 MiB   54.672 MiB   @profile
+    32                             def create_empty_matrix(N):
+    33                                 # result is Nx(N+1)
+    34   54.672 MiB    0.000 MiB       result = []
+    35   55.188 MiB    0.000 MiB       for i in range(N):
+    36   55.188 MiB    0.258 MiB           result.append([0] * (N+1))
+    37   55.188 MiB    0.000 MiB       return result
+
+
+Filename: matmult_profiling.py
+
+Line #    Mem usage    Increment   Line Contents
+================================================
+    41   55.188 MiB   55.188 MiB   @profile
+    42                             def multiply_matrices(X,Y, result):
+    43                                 # iterate through rows of X
+    44   57.105 MiB    0.000 MiB       for i in range(len(X)):
+    45                                     # iterate through columns of Y
+    46   57.105 MiB    0.000 MiB           for j in range(len(Y[0])):
+    47                                         # iterate through rows of Y
+    48   57.105 MiB    0.258 MiB               for k in range(len(Y)):
+    49   57.105 MiB    0.008 MiB                   result[i][j] += X[i][k] * Y[k][j]
+    50                             
+    51   57.105 MiB    0.000 MiB       return result
+
+
+Filename: matmult_profiling.py
+
+Line #    Mem usage    Increment   Line Contents
+================================================
+    53   57.105 MiB   57.105 MiB   @profile
+    54                             def print_matrix(result):
+    55   57.105 MiB    0.000 MiB       for r in result:
+    56   57.105 MiB    0.000 MiB           print(r)
+
+
+Filename: matmult_profiling.py
+
+Line #    Mem usage    Increment   Line Contents
+================================================
+    59   54.215 MiB   54.215 MiB   @profile
+    60                             def __main__(N):
+    61   54.215 MiB   54.215 MiB       X= create_matrix(N)
+    62   54.672 MiB   54.672 MiB       Y= create_larger_matrix(N)
+    63   55.188 MiB   55.188 MiB       result = create_empty_matrix(N)
+    64   57.105 MiB   57.105 MiB       result= multiply_matrices(X,Y, result)
+    65   57.105 MiB   57.105 MiB       print_matrix(result)
+
