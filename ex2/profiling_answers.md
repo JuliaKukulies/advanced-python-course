@@ -22,6 +22,6 @@
 - see script *matmult_improved.py*
 - the main change is the new function **multiply_matrices**, which now takes much less time (ca. 1/3 of the time before)
 - I also used list comprehension to create the random matrices (instead of the append() function), but this improvement saves only space in the code and not much time or memory 
-- best performance: 
+- best performance: 1.4 s (without print function), 2.4 s (with print function)
 
 

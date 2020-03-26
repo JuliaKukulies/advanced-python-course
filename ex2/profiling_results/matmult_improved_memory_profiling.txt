@@ -1,0 +1,51 @@
+Line #    Mem usage    Increment   Line Contents
+================================================
+     7   54.293 MiB   54.293 MiB   @profile
+     8                             def create_matrix(N):
+     9                                 # NxN matrix
+    10   54.480 MiB    0.188 MiB       X =  [[random.randint(0, 100) for i in range(N)] for j in range(N)]
+    11   54.480 MiB    0.000 MiB       return X
+
+
+Filename: matmult_improved_profiling.py
+
+Line #    Mem usage    Increment   Line Contents
+================================================
+    13   54.480 MiB   54.480 MiB   @profile
+    14                             def create_larger_matrix(N):
+    15                                 # Nx(N+1) matrix
+    16   54.996 MiB    0.258 MiB       Y = [[random.randint(0, 100) for i in range(N+1)] for j in range(N)]
+    17   54.996 MiB    0.000 MiB       return Y
+
+
+Filename: matmult_improved_profiling.py
+
+Line #    Mem usage    Increment   Line Contents
+================================================
+    19   54.996 MiB   54.996 MiB   @profile
+    20                             def multiply_matrices(X,Y):
+    21   57.496 MiB    0.258 MiB       result = [[sum(a*b for a,b in zip(X_row,Y_col)) for Y_col in zip(*Y)] for X_row in X]
+    22   57.496 MiB    0.000 MiB       return result
+
+
+Filename: matmult_improved_profiling.py
+
+Line #    Mem usage    Increment   Line Contents
+================================================
+    24   57.496 MiB   57.496 MiB   @profile
+    25                             def print_matrix(result):
+    26   57.496 MiB    0.000 MiB       for r in result:
+    27   57.496 MiB    0.000 MiB           print(r)
+
+
+Filename: matmult_improved_profiling.py
+
+Line #    Mem usage    Increment   Line Contents
+================================================
+    29   54.293 MiB   54.293 MiB   @profile
+    30                             def __main__(N):
+    31   54.480 MiB   54.480 MiB       X= create_matrix(N)
+    32   54.996 MiB   54.996 MiB       Y= create_larger_matrix(N)
+    33   57.496 MiB   57.496 MiB       result= multiply_matrices(X,Y)
+    34   57.496 MiB   57.496 MiB       print_matrix(result)
+

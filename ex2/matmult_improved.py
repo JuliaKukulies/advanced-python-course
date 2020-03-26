@@ -1,8 +1,6 @@
 # Program to multiply two matrices, improved performance (Exercise 2)
 
-
 import random
-import timeit
 
 N = 250
 
@@ -31,6 +29,8 @@ def main(N):
     Y= create_larger_matrix(N)
     result= multiply_matrices(X,Y)
     print_matrix(result)
+
+
 
 
 # call main program
