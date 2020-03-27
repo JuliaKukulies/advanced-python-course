@@ -64,9 +64,7 @@ class GameRunner:
 
             # control input
             while True:
-                if prompt == 'Y' or if prompt == 'y':
-                    break
-                elif prompt == 'n':
+                if prompt == 'Y' or if prompt == 'n':
                     break
                 else:
                     print('Please insert Y eller n!')
