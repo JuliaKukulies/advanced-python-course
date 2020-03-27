@@ -22,8 +22,10 @@ class GameRunner:
         # Probably counts wins or something.
         # Great variable name, 10/10.
         c = 0
+
         runner = cls()
         while True:
+            runner.dice = Die.create_dice(5)
             print("Round {}\n".format(runner.round))
 
             for die in runner.dice:
@@ -31,11 +33,10 @@ class GameRunner:
 
             guess = input("Sigh. What is your guess?: ")
 
-
             while True:
                 try:
                     guess = int(guess)
-                    break 
+                    break
                 except:
                     print('Please insert a number!')
                     guess = input("Sigh. What is your guess?: ")
@@ -59,10 +60,24 @@ class GameRunner:
                 print("The fact it took you so long is pretty sad")
                 break
 
-
             prompt = input("Would you like to play again?[Y/n]: ")
 
-            if prompt == 'Y' or prompt == 'y':
+            # control input
+            while True:
+                if prompt == 'Y' or if prompt == 'y':
+                    break
+                elif prompt == 'n':
+                    break
+                else:
+                    print('Please insert Y eller n!')
+                    prompt = input("Would you like to play again?[Y/n]: ")
+
+            if prompt == 'Y':
                 continue
             else:
                 break
+
+
+
+
+
