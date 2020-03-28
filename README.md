@@ -1,3 +1,3 @@
-In this repository, I store the answers to exercises 1 -3 for the Advanced Scientific Programming Course at Uppsala University.
+This repository contains the answers and solutions for exercises 1 - 3 for the Advanced Scientific Programming in Python Course at Uppsala University.
 
 
